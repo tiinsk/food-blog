@@ -6,5 +6,7 @@ dotenvLoad();
 const withNextEnv = nextEnv();
 
 module.exports = withNextEnv({
-  // Your Next.js config.
+  images: {
+    domains: ['images.ctfassets.net'],
+  },
 });

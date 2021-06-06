@@ -1,11 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 
-import { fonts } from './fonts';
-import { spaces } from './spaces';
 import { breakpoints } from './breakpoints';
 import { colors } from './colors';
-
-export const pageMaxWidth = '1300px';
+import { fonts } from './fonts';
+import { spaces } from './spaces';
 
 export const theme = {
   space: spaces,
@@ -23,11 +21,13 @@ export const theme = {
     screenM: `@media (max-width: ${breakpoints.screenM})`,
     screenL: `@media (max-width: ${breakpoints.screenL})`,
   },
-  colors: colors,
+  colors,
   sizes: {
-    pageMaxWidth,
+    pageMaxWidth: '1300px',
+    contentSmallWidth: '448px',
+    contentMediumWidth: '768px',
   },
-  fonts: fonts,
+  fonts,
 };
 
 export const GlobalStyle = createGlobalStyle`

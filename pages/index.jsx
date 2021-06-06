@@ -1,5 +1,31 @@
-const Home = () => {
-  return <div>Home</div>;
+import { Hero } from '../components/hero';
+import { RecipeListItem } from '../components/recipes/recipe-list-item';
+import { Section } from '../components/styled/section';
+import { H5 } from '../components/styled/typography';
+import ContentfulApi from '../contentful/api';
+
+export async function getStaticProps() {
+  const { pageHome, recipeCollection } = await ContentfulApi.getHomePageData();
+
+  return {
+    props: {
+      home: pageHome,
+      recipes: recipeCollection.items,
+    },
+  };
+}
+
+const Home = ({ home }) => {
+  const { hero, newRecipesTitle } = home;
+
+  return (
+    <div>
+      <Hero data={hero} />
+      <Section>
+        <H5>{newRecipesTitle}</H5>
+      </Section>
+    </div>
+  );
 };
 
 export default Home;
