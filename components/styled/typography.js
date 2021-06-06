@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 //Headers
 export const H1Style = css`
-  ${({ theme }) => theme.fonts.headers};
+  font-family: ${({ theme }) => theme.fonts.headers};
   font-weight: 400;
   font-size: 6.1rem;
   line-height: 9rem;
@@ -13,7 +13,7 @@ export const H1 = styled.h1`
 `;
 
 export const H2Style = css`
-  ${({ theme }) => theme.fonts.headers};
+  font-family: ${({ theme }) => theme.fonts.headers};
   font-weight: 400;
   font-size: 4.88rem;
   line-height: 6rem;
@@ -24,7 +24,7 @@ export const H2 = styled.h2`
 `;
 
 export const H3Style = css`
-  ${({ theme }) => theme.fonts.headers};
+  font-family: ${({ theme }) => theme.fonts.headers};
   font-weight: 400;
   font-size: 3.91rem;
   line-height: 6rem;
@@ -35,7 +35,7 @@ export const H3 = styled.h3`
 `;
 
 export const H4Style = css`
-  ${({ theme }) => theme.fonts.headers};
+  font-family: ${({ theme }) => theme.fonts.headers};
   font-weight: 400;
   font-size: 3.13rem;
   line-height: 6rem;
@@ -46,7 +46,7 @@ export const H4 = styled.h4`
 `;
 
 export const H5Style = css`
-  ${({ theme }) => theme.fonts.headers};
+  font-family: ${({ theme }) => theme.fonts.headers};
   font-weight: 600;
   font-size: 2.5rem;
   line-height: 3rem;
@@ -57,11 +57,12 @@ export const H5 = styled.h5`
 `;
 
 export const H6Style = css`
-  ${({ theme }) => theme.fonts.headers};
+  font-family: ${({ theme }) => theme.fonts.headers};
   font-weight: 600;
   font-size: 2rem;
   line-height: 3rem;
   color: ${({ theme }) => theme.colors.black};
+  margin: ${({ theme }) => theme.space.M}px 0;
 `;
 export const H6 = styled.h6`
   ${H6Style};
@@ -70,7 +71,7 @@ export const H6 = styled.h6`
 //Paragraphs
 
 export const P1Style = css`
-  ${({ theme }) => theme.fonts.paragraphs};
+  font-family: ${({ theme }) => theme.fonts.paragraphs};
   font-weight: 400;
   font-size: 1.6rem;
   line-height: 3rem;
@@ -81,7 +82,7 @@ export const P1 = styled.p`
 `;
 
 export const P2Style = css`
-  ${({ theme }) => theme.fonts.paragraphs};
+  font-family: ${({ theme }) => theme.fonts.paragraphs};
   font-weight: 300;
   font-size: 1.4rem;
   line-height: 2.4rem;
@@ -92,24 +93,25 @@ export const P2 = styled.p`
 `;
 
 export const SmallStyle = css`
-  ${({ theme }) => theme.fonts.paragraphs};
+  font-family: ${({ theme }) => theme.fonts.paragraphs};
   font-weight: 400;
   font-size: 1.2rem;
-  line-height: 2.4rem;
+  line-height: 3rem;
   color: ${({ theme }) => theme.colors.black};
 `;
-export const Small = styled.p`
+export const Small = styled.div`
   ${SmallStyle};
 `;
 
 export const LabelStyle = css`
-  ${({ theme }) => theme.fonts.paragraphs};
-  font-weight: 500;
+  font-family: ${({ theme }) => theme.fonts.paragraphs};
+  font-weight: 600;
   font-size: 1.2rem;
-  line-height: 2rem;
+  line-height: 3rem;
   letter-spacing: 0.08rem;
   color: ${({ theme }) => theme.colors.black};
+  text-transform: uppercase;
 `;
-export const Label = styled.p`
+export const Label = styled.div`
   ${LabelStyle};
 `;
