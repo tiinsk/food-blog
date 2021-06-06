@@ -15,7 +15,7 @@ export async function getStaticProps() {
   };
 }
 
-const Home = ({ home }) => {
+const Home = ({ home, recipes }) => {
   const { hero, newRecipesTitle } = home;
 
   return (
@@ -23,6 +23,9 @@ const Home = ({ home }) => {
       <Hero data={hero} />
       <Section>
         <H5>{newRecipesTitle}</H5>
+        {recipes.map(recipe => (
+          <RecipeListItem key={recipe.slug} data={recipe} />
+        ))}
       </Section>
     </div>
   );

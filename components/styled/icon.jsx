@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { Box } from './box';
 
-const StyledIcon = styled(Box)`
-  ${({ theme }) => theme.fonts.materialIcons};
+import { TextBox } from './text';
+
+const StyledIcon = styled(TextBox)`
+  font-family: ${({ theme }) => theme.fonts.materialIcons};
 
   font-weight: normal;
   font-style: normal;
-  font-size: 24px;
   display: inline-block;
   line-height: 1;
   text-transform: none;
@@ -27,6 +27,8 @@ const StyledIcon = styled(Box)`
   font-feature-settings: 'liga';
 `;
 
-export const Icon = ({ type, ...props }) => (
-  <StyledIcon {...props}>{type}</StyledIcon>
+export const Icon = ({ type, size, ...props }) => (
+  <StyledIcon {...props} fontSize={size || '24px'}>
+    {type}
+  </StyledIcon>
 );
