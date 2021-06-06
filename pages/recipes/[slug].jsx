@@ -17,6 +17,7 @@ import {
   TextComponent,
 } from '../../components/styled/text';
 import { P1Style, P2Style } from '../../components/styled/typography';
+import { Tag } from '../../components/tags';
 import ContentfulApi from '../../contentful/api';
 
 const StyledRecipeBody = styled(TextComponent)`
@@ -57,6 +58,11 @@ const Recipe = ({ recipe, pageRecipe }) => {
   return (
     <div>
       <Hero data={recipe.hero} height="560px">
+        <Flex>
+          {recipe.categoriesCollection.items.map(category => (
+            <Tag key={category.sys.id} title={category.name} />
+          ))}
+        </Flex>
         <H2 color="white">{recipe.name}</H2>
         <P1 color="white" maxWidth="contentMediumWidth">
           {recipe.description}

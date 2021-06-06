@@ -13,6 +13,8 @@ export const H1 = styled.h1`
 `;
 
 export const H2Style = css`
+  margin-top: ${({ theme }) => theme.space.M}px;
+  margin-bottom: ${({ theme }) => theme.space.M}px;
   font-family: ${({ theme }) => theme.fonts.headers};
   font-weight: 400;
   font-size: 4.88rem;

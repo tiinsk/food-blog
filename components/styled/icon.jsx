@@ -32,3 +32,7 @@ export const Icon = ({ type, size, ...props }) => (
     {type}
   </StyledIcon>
 );
+
+export const IconButton = ({ onClick, ...props }) => (
+  <Icon {...props} as="button" onClick={onClick} />
+);
