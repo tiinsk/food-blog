@@ -13,9 +13,9 @@ const StyledTag = styled(Flex).attrs({
   border-radius: ${({ theme }) => theme.space.M}px;
 `;
 
-export const Tag = ({ title, onRemove }) => {
+export const Tag = ({ title, onRemove, ...props }) => {
   return (
-    <StyledTag>
+    <StyledTag {...props}>
       <Label color="purble100">{title}</Label>
       {onRemove && (
         <IconButton

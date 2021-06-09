@@ -14,7 +14,6 @@ const sectionVariants = variant({
 
 export const StyledSection = styled(Box)`
   position: relative;
-  z-index: 1;
   ${sectionVariants};
 `;
 

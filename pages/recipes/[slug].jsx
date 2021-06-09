@@ -77,7 +77,7 @@ const Recipe = ({ recipe, pageRecipe }) => {
           <Flex alignItems="center">
             <Icon type="leaderboard" size="1.6rem" color="white" />
             <Small ml="S" color="white">
-              {recipe.difficultyLevel.title}
+              {recipe.difficultyLevel.name}
             </Small>
           </Flex>
         </Flex>

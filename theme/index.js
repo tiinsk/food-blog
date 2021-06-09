@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 import { breakpoints } from './breakpoints';
-import { colors } from './colors';
+import { colors, shadows } from './colors';
 import { fonts } from './fonts';
 import { spaces } from './spaces';
 
@@ -22,8 +22,10 @@ export const theme = {
     screenL: `@media (max-width: ${breakpoints.screenL})`,
   },
   colors,
+  shadows,
   sizes: {
     pageMaxWidth: '1300px',
+    contentXSmallWidth: '176px',
     contentSmallWidth: '448px',
     contentMediumWidth: '768px',
   },

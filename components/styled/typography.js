@@ -97,7 +97,7 @@ export const P2 = styled.p`
 export const SmallStyle = css`
   font-family: ${({ theme }) => theme.fonts.paragraphs};
   font-weight: 400;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   line-height: 3rem;
   color: ${({ theme }) => theme.colors.black};
 `;

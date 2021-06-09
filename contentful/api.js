@@ -34,6 +34,16 @@ export default class ContentfulApi {
               url
             }
           }
+          filter {
+            title
+            allFiltersButtonText
+            filtersCollection(preview: ${process.env.CONTENFUL_PREVIEW}) {
+              items {
+                title
+                filter
+              }
+            }
+          }
         }
         recipeCollection(preview: ${process.env.CONTENFUL_PREVIEW}) {
           items {
@@ -54,7 +64,7 @@ export default class ContentfulApi {
             }
             cookTime
             difficultyLevel(preview: ${process.env.CONTENFUL_PREVIEW}) {
-              title
+              name
               level
             }
           }
@@ -106,13 +116,16 @@ export default class ContentfulApi {
             }
             categoriesCollection(preview: ${process.env.CONTENFUL_PREVIEW}, limit: 30) {
               items {
+                sys {
+                  id
+                }
                 name
               }
             }
             cookTime
             drinkRecommendations
             difficultyLevel(preview: ${process.env.CONTENFUL_PREVIEW}) {
-              title
+              name
               level
             }
             stepsCollection(preview: ${process.env.CONTENFUL_PREVIEW}, limit: 30) {
@@ -138,6 +151,37 @@ export default class ContentfulApi {
                 }
               }
             }
+          }
+        }
+      }
+    `;
+
+    const response = await this.callContentful(query);
+    return response.data;
+  }
+
+  static async getFilters() {
+    const query = `
+      {
+        themeCollection(order: [name_ASC], preview: ${process.env.CONTENFUL_PREVIEW}) {
+          items {
+            name
+          }
+        }
+        categoryCollection(order: [name_ASC], preview: ${process.env.CONTENFUL_PREVIEW}) {
+          items {
+            name
+          }
+        }
+        keyIngredientCollection(order: [name_ASC], preview: ${process.env.CONTENFUL_PREVIEW}) {
+          items {
+            name
+          }
+        }
+        difficultyLevelCollection(order: [level_ASC], preview: ${process.env.CONTENFUL_PREVIEW}) {
+          items {
+            name
+            level
           }
         }
       }

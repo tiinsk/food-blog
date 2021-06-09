@@ -46,3 +46,8 @@ export const colors = {
   grey30: '#f2f2f2',
   grey20: '#f8f8f8',
 };
+
+export const shadows = {
+  dropShadow: '0px 13px 22px rgba(0, 0, 0, 0.04)',
+  dropShadowDarker: '0px 4px 11px rgba(0, 0, 0, 0.08)',
+};
