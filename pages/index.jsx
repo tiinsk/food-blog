@@ -46,6 +46,25 @@ const Home = ({ home, recipes, filterOptions }) => {
   const { hero, newRecipesTitle, filter } = home;
   const [selectedFilters, setSelectedFilters] = useState({});
 
+  const filterCount = flatten(Object.values(selectedFilters)).length;
+  const stringifiedFilters = stringify(selectedFilters);
+
+  const { data, error } = useSWR(
+    [getFilteredRecipes, stringifiedFilters],
+    query =>
+      filterCount > 0
+        ? fetcher(query, { preview: true, ...selectedFilters })
+        : null
+  );
+
+  const uniqueRecipes = data ? getUniqueRecipeIdsFromFilters(data) : [];
+  const stringifiedIds = stringify(uniqueRecipes);
+
+  const { data: recipeData, error: recipeError } = useSWR(
+    [getRecipesWithId, stringifiedIds],
+    query => (uniqueRecipes.length ? fetcher(query, { uniqueRecipes }) : null)
+  );
+
   return (
     <div>
       <Hero data={hero} />
@@ -58,10 +77,25 @@ const Home = ({ home, recipes, filterOptions }) => {
         />
       </Section>
       <Section>
-        <H5>{newRecipesTitle}</H5>
-        {recipes.map(recipe => (
-          <RecipeListItem key={recipe.slug} data={recipe} />
-        ))}
+        {filterCount === 0 ? (
+          <>
+            <H5>{newRecipesTitle}</H5>
+            {recipes.map(recipe => (
+              <RecipeListItem key={recipe.slug} data={recipe} />
+            ))}
+          </>
+        ) : (
+          <>
+            <H5>{filter.resultTitle}</H5>
+            {recipeData && recipeData.recipeCollection ? (
+              recipeData.recipeCollection.items.map(recipe => (
+                <RecipeListItem key={recipe.slug} data={recipe} />
+              ))
+            ) : (
+              <P1>{filter.noResultsTitle}</P1>
+            )}
+          </>
+        )}
       </Section>
     </div>
   );
