@@ -1,5 +1,8 @@
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
+import { fetcher } from '../../api/fetcher';
+import { getRecipePage } from '../../api/queries/pages/get-recipe-page';
+import { getAllRecipeIds } from '../../api/queries/recipes/get-all-recipe-ids';
 
 import { Hero } from '../../components/hero';
 import { Ingredient } from '../../components/recipes/ingredient';
@@ -28,7 +31,9 @@ const StyledRecipeBody = styled(TextComponent)`
 `;
 
 export async function getStaticPaths() {
-  const { recipeCollection } = await ContentfulApi.getRecipes();
+  const { recipeCollection } = await fetcher(getAllRecipeIds, {
+    preview: true,
+  });
   return {
     paths: recipeCollection.items.map(recipe => ({
       params: { slug: recipe.slug },
@@ -38,9 +43,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const { recipeCollection, pageRecipe } = await ContentfulApi.getRecipe(
-    params.slug
-  );
+  const { recipeCollection, pageRecipe } = await fetcher(getRecipePage, {
+    preview: true,
+    slug: params.slug,
+  });
 
   return {
     props: { recipe: recipeCollection.items[0], pageRecipe },

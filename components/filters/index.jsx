@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 
 import { Dropdown } from '../dropdowns';
@@ -22,27 +21,30 @@ const SelectedOptionsList = styled.ul`
   flex-wrap: wrap;
 `;
 
-export const Filter = ({ data, filterValues }) => {
-  const [selectedFilters, setSelectedFilters] = useState({});
-
+export const Filter = ({
+  filterSection,
+  filterOptions,
+  selectedFilters,
+  onUpdateFilters,
+}) => {
   const onUpdateFilterSelection = (filter, id) => {
     if (
       selectedFilters[filter] &&
       selectedFilters[filter].some(si => si === id)
     ) {
-      setSelectedFilters({
+      onUpdateFilters({
         ...selectedFilters,
         [filter]: selectedFilters[filter].filter(si => si !== id),
       });
     } else {
-      setSelectedFilters({
+      onUpdateFilters({
         ...selectedFilters,
         [filter]: [...(selectedFilters[filter] || []), id],
       });
     }
   };
 
-  const filters = data.filtersCollection.items;
+  const filters = filterSection.filtersCollection.items;
 
   const selectedList = Object.keys(selectedFilters).reduce((acc, curr) => {
     const selected = selectedFilters[curr];
@@ -53,7 +55,7 @@ export const Filter = ({ data, filterValues }) => {
     <div>
       <StyledFilter>
         <Label color="grey100" mb="S">
-          {data.title}
+          {filterSection.title}
         </Label>
         <Flex>
           <Flex flexGrow={1}>
@@ -61,7 +63,7 @@ export const Filter = ({ data, filterValues }) => {
               <Box key={filter} mr="S">
                 <Dropdown
                   title={title}
-                  options={filterValues[filter].map(fv => ({
+                  options={filterOptions[filter].map(fv => ({
                     id: fv.name,
                     label: fv.name,
                   }))}
@@ -72,7 +74,7 @@ export const Filter = ({ data, filterValues }) => {
             ))}
           </Flex>
           <Button ml="M" iconType="filter_list">
-            {data.allFiltersButtonText}
+            {filterSection.allFiltersButtonText}
           </Button>
         </Flex>
       </StyledFilter>

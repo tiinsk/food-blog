@@ -25,12 +25,12 @@ const StyledCheckbox = styled.button`
   width: 12px;
   height: 12px;
   padding: 0;
-  margin-right: ${({ theme }) => theme.space.S}px;
 
   ${({ isChecked }) => isChecked && CheckedStyle};
 `;
 
 const Label = styled.button`
+  padding-left: ${({ theme }) => theme.space.M}px;
   flex-grow: 1;
   text-align: left;
   ${SmallStyle};
