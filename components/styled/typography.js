@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-//Headers
+// Headers
 export const H1Style = css`
   font-family: ${({ theme }) => theme.fonts.headers};
   font-weight: 400;
@@ -53,6 +53,7 @@ export const H5Style = css`
   font-size: 2.5rem;
   line-height: 3rem;
   color: ${({ theme }) => theme.colors.black};
+  margin: ${({ theme }) => theme.space.M}px 0;
 `;
 export const H5 = styled.h5`
   ${H5Style};
@@ -70,7 +71,7 @@ export const H6 = styled.h6`
   ${H6Style};
 `;
 
-//Paragraphs
+// Paragraphs
 
 export const P1Style = css`
   font-family: ${({ theme }) => theme.fonts.paragraphs};

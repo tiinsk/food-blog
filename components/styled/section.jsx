@@ -23,7 +23,7 @@ StyledSection.defaultProps = {
 
 export const Section = ({ children, variant, sectionProps, ...props }) => {
   return (
-    <StyledSection variant={variant} my="XL" {...sectionProps}>
+    <StyledSection variant={variant} my="L" {...sectionProps}>
       <Flex
         flexDirection="column"
         width="pageMaxWidth"

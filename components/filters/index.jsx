@@ -19,6 +19,7 @@ const StyledFilter = styled(Box).attrs({
 const SelectedOptionsList = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  padding: 0;
 `;
 
 export const Filter = ({
