@@ -15,6 +15,7 @@ import {
   P1 as StyledP1,
   P2 as StyledP2,
   Small as StyledSmall,
+  StyledRichText,
 } from './typography';
 
 const Ellipsis = css`
@@ -38,10 +39,18 @@ export const TextBox = styled(Box)`
   ${TextStyles};
 `;
 
-export const TextComponent = ({ as, children, richText, ...props }) => {
+export const TextComponent = ({ as, children, ...props }) => {
   return (
     <TextBox as={as} {...props}>
-      {richText ? documentToReactComponents(richText) : children}
+      {children}
+    </TextBox>
+  );
+};
+
+export const RichText = ({ richText, ...props }) => {
+  return (
+    <TextBox as={StyledRichText} color="black" {...props}>
+      {documentToReactComponents(richText)}
     </TextBox>
   );
 };

@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 import { Box } from '../styled/box';
-import { H6, TextComponent } from '../styled/text';
-import { P1Style } from '../styled/typography';
+import { H6, RichText } from '../styled/text';
 
 const StyledStep = styled(Box).attrs({
   as: 'li',
@@ -16,10 +15,8 @@ const StyledStep = styled(Box).attrs({
   }
 `;
 
-const StepBody = styled(TextComponent)`
-  ${P1Style};
+const StepBody = styled(RichText)`
   b {
-    font-weight: 700;
     color: ${({ theme }) => theme.colors.blue90};
   }
 `;

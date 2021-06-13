@@ -4,7 +4,7 @@ import { variant } from 'styled-system';
 
 import { Box } from '../styled/box';
 import { Flex } from '../styled/flex';
-import { H1, P1 } from '../styled/text';
+import { H1, P1, RichText } from '../styled/text';
 
 const HeroDefaultHeight = '120vh';
 
@@ -84,7 +84,7 @@ export const Hero = ({
         <HeroContent {...props}>
           {data.title && <H1 color="white">{data.title}</H1>}
           {data.subtitle && (
-            <P1
+            <RichText
               color="white"
               maxWidth="contentSmallWidth"
               richText={data.subtitle.json}

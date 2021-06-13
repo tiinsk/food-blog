@@ -118,3 +118,39 @@ export const LabelStyle = css`
 export const Label = styled.div`
   ${LabelStyle};
 `;
+
+export const StyledRichText = styled.div`
+  p {
+    ${P1Style};
+    color: inherit;
+  }
+  b {
+    ${P1Style};
+    font-weight: 700;
+    color: inherit;
+  }
+  h1 {
+    ${H1Style};
+    color: inherit;
+  }
+  h2 {
+    ${H2Style};
+    color: inherit;
+  }
+  h3 {
+    ${H3Style};
+    color: inherit;
+  }
+  h4 {
+    ${H4Style};
+    color: inherit;
+  }
+  h5 {
+    ${H5Style};
+    color: inherit;
+  }
+  h6 {
+    ${H6Style};
+    color: inherit;
+  }
+`;
