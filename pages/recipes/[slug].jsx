@@ -5,6 +5,7 @@ import { getRecipePage } from '../../api/queries/pages/get-recipe-page';
 import { getAllRecipeIds } from '../../api/queries/recipes/get-all-recipe-ids';
 
 import { Hero } from '../../components/hero';
+import { PageContent } from '../../components/page-layout/page-content';
 import { Ingredient } from '../../components/recipes/ingredient';
 import { Step } from '../../components/recipes/step';
 import { Box } from '../../components/styled/box';
@@ -63,7 +64,7 @@ const Recipe = ({ recipe, pageRecipe }) => {
 
   return (
     <div>
-      <Hero data={recipe.hero} height="560px">
+      <Hero data={recipe.hero} variant="colored" height="560px">
         <Flex>
           {recipe.categoriesCollection.items.map(category => (
             <Tag key={category.sys.id} title={category.name} />
@@ -88,49 +89,53 @@ const Recipe = ({ recipe, pageRecipe }) => {
           </Flex>
         </Flex>
       </Hero>
-      <Section>
-        <StyledRecipeBody richText={recipe.body.json} />
-      </Section>
-      <Section>
-        <Flex>
-          <Flex flex="0 0 30%" flexDirection="column">
-            <H4 mt="0">{pageRecipe.ingredientTitle}</H4>
-            <Box as="table" pl="0">
-              <tbody>
-                {recipe.ingredientsCollection.items.map(ingredient => (
-                  <Ingredient
-                    key={ingredient.sys.id}
-                    amount={ingredient.amount}
-                    unit={ingredient.unit.shortTitle}
-                    title={ingredient.title}
+      <PageContent>
+        <Section>
+          <StyledRecipeBody richText={recipe.body.json} />
+        </Section>
+        <Section>
+          <Flex flexDirection={['column', null, null, 'row']}>
+            <Flex
+              mb={['L', null, null, '0']}
+              flex="0 0 30%"
+              flexDirection="column"
+            >
+              <H4 mt="0">{pageRecipe.ingredientTitle}</H4>
+              <Box as="table" pl="0">
+                <tbody>
+                  {recipe.ingredientsCollection.items.map(ingredient => (
+                    <Ingredient
+                      key={ingredient.sys.id}
+                      amount={ingredient.amount}
+                      unit={ingredient.unit.shortTitle}
+                      title={ingredient.title}
+                    />
+                  ))}
+                </tbody>
+              </Box>
+              {recipe.drinkRecommendations &&
+                recipe.drinkRecommendations.length > 0 && (
+                  <Box mt="XL">
+                    <H6 mt="0">{pageRecipe.drinkRecommendationTitle}</H6>
+                    <P1>{recipe.drinkRecommendations.join(', ')}</P1>
+                  </Box>
+                )}
+            </Flex>
+            <Box flex="0 0 70%" flexDirection="column">
+              <H4 mt="0">{pageRecipe.stepTitle}</H4>
+              <Box as="ol" pl="L">
+                {recipe.stepsCollection.items.map(step => (
+                  <Step
+                    key={step.sys.id}
+                    title={step.title}
+                    body={step.body.json}
                   />
                 ))}
-              </tbody>
+              </Box>
             </Box>
-            {recipe.drinkRecommendations &&
-              recipe.drinkRecommendations.length > 0 && (
-                <Box mt="XL">
-                  <H6 mt="0">{pageRecipe.drinkRecommendationTitle}</H6>
-                  <P1>{recipe.drinkRecommendations.join(', ')}</P1>
-                </Box>
-              )}
           </Flex>
-          <Box flex="0 0 70%" flexDirection="column">
-            <H4 mt="0" ml="S">
-              {pageRecipe.stepTitle}
-            </H4>
-            <Box as="ol" pl="L">
-              {recipe.stepsCollection.items.map(step => (
-                <Step
-                  key={step.sys.id}
-                  title={step.title}
-                  body={step.body.json}
-                />
-              ))}
-            </Box>
-          </Box>
-        </Flex>
-      </Section>
+        </Section>
+      </PageContent>
     </div>
   );
 };

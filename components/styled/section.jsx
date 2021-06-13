@@ -24,13 +24,7 @@ StyledSection.defaultProps = {
 export const Section = ({ children, variant, sectionProps, ...props }) => {
   return (
     <StyledSection variant={variant} my="L" {...sectionProps}>
-      <Flex
-        flexDirection="column"
-        width="pageMaxWidth"
-        maxWidth="90%"
-        mx="auto"
-        {...props}
-      >
+      <Flex flexDirection="column" {...props}>
         {children}
       </Flex>
     </StyledSection>

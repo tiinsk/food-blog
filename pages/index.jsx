@@ -10,6 +10,7 @@ import { getFilteredRecipes } from '../api/queries/recipes/get-filtered-recipes'
 import { getRecipesWithId } from '../api/queries/recipes/get-recipes-with-id';
 import { Filter } from '../components/filters';
 import { Hero } from '../components/hero';
+import { PageContent } from '../components/page-layout/page-content';
 import { RecipeListItem } from '../components/recipes/recipe-list-item';
 import { Section } from '../components/styled/section';
 import { P1 } from '../components/styled/text';
@@ -67,36 +68,38 @@ const Home = ({ home, recipes, filterOptions }) => {
 
   return (
     <div>
-      <Hero data={hero} />
-      <Section sectionProps={{ mt: '-100px' }}>
-        <Filter
-          selectedFilters={selectedFilters}
-          onUpdateFilters={filters => setSelectedFilters(filters)}
-          filterSection={filter}
-          filterOptions={filterOptions}
-        />
-      </Section>
-      <Section>
-        {filterCount === 0 ? (
-          <>
-            <H5>{newRecipesTitle}</H5>
-            {recipes.map(recipe => (
-              <RecipeListItem key={recipe.slug} data={recipe} />
-            ))}
-          </>
-        ) : (
-          <>
-            <H5>{filter.resultTitle}</H5>
-            {recipeData && recipeData.recipeCollection ? (
-              recipeData.recipeCollection.items.map(recipe => (
+      <Hero data={hero} pb="20vh" />
+      <PageContent>
+        <Section sectionProps={{ top: '-130px', mb: '-130px' }}>
+          <Filter
+            selectedFilters={selectedFilters}
+            onUpdateFilters={filters => setSelectedFilters(filters)}
+            filterSection={filter}
+            filterOptions={filterOptions}
+          />
+        </Section>
+        <Section>
+          {filterCount === 0 ? (
+            <>
+              <H5>{newRecipesTitle}</H5>
+              {recipes.map(recipe => (
                 <RecipeListItem key={recipe.slug} data={recipe} />
-              ))
-            ) : (
-              <P1>{filter.noResultsTitle}</P1>
-            )}
-          </>
-        )}
-      </Section>
+              ))}
+            </>
+          ) : (
+            <>
+              <H5>{filter.resultTitle}</H5>
+              {recipeData && recipeData.recipeCollection ? (
+                recipeData.recipeCollection.items.map(recipe => (
+                  <RecipeListItem key={recipe.slug} data={recipe} />
+                ))
+              ) : (
+                <P1>{filter.noResultsTitle}</P1>
+              )}
+            </>
+          )}
+        </Section>
+      </PageContent>
     </div>
   );
 };

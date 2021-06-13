@@ -14,6 +14,7 @@ const ButtonStyle = css`
   display: flex;
   justify-content: center;
   align-items: center;
+  white-space: nowrap;
 
   &:hover {
     border-color: ${({ theme }) => theme.colors.blue80};
@@ -34,6 +35,7 @@ export const StyledDropdownButton = styled(Box).attrs({
   px: 'M',
   pr: 'S',
   py: 'XS',
+  mb: 'S',
 })`
   ${ButtonStyle};
 `;

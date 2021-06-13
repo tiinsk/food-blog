@@ -1,4 +1,4 @@
-import { PageLayout } from '../components/pageLayout';
+import { PageLayout } from '../components/page-layout/page-layout';
 
 const App = ({ Component, pageProps }) => {
   return (

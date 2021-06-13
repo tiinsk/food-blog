@@ -14,6 +14,7 @@ const ButtonStyle = css`
   display: flex;
   justify-content: center;
   align-items: center;
+  white-space: nowrap;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.blue100};

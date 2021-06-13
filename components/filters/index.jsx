@@ -58,8 +58,11 @@ export const Filter = ({
         <Label color="grey100" mb="S">
           {filterSection.title}
         </Label>
-        <Flex>
-          <Flex flexGrow={1}>
+        <Flex
+          flexDirection={['column', null, null, 'row']}
+          alignItems="flex-start"
+        >
+          <Flex flexWrap="wrap" flexGrow={1}>
             {filters.map(({ filter, title }) => (
               <Box key={filter} mr="S">
                 <Dropdown
@@ -74,7 +77,11 @@ export const Filter = ({
               </Box>
             ))}
           </Flex>
-          <Button ml="M" iconType="filter_list">
+          <Button
+            ml={['0', null, null, 'M']}
+            mt={['M', null, null, '0']}
+            iconType="filter_list"
+          >
             {filterSection.allFiltersButtonText}
           </Button>
         </Flex>

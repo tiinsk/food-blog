@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
 
-import { GlobalStyle, theme } from '../theme';
+import { GlobalStyle, theme } from '../../theme';
 
 export const PageLayout = ({ children }) => {
   return (
