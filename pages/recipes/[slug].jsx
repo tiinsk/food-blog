@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
+
 import { fetcher } from '../../api/fetcher';
 import { getRecipePage } from '../../api/queries/pages/get-recipe-page';
 import { getAllRecipeIds } from '../../api/queries/recipes/get-all-recipe-ids';
-
 import { Hero } from '../../components/hero';
 import { PageContent } from '../../components/page-layout/page-content';
 import { Ingredient } from '../../components/recipes/ingredient';
@@ -22,7 +22,6 @@ import {
 } from '../../components/styled/text';
 import { P1Style, P2Style } from '../../components/styled/typography';
 import { Tag } from '../../components/tags';
-import ContentfulApi from '../../contentful/api';
 
 const StyledRecipeBody = styled(TextComponent)`
   ${P2Style};
@@ -64,7 +63,7 @@ const Recipe = ({ recipe, pageRecipe }) => {
 
   return (
     <div>
-      <Hero data={recipe.hero} variant="colored" height="560px">
+      <Hero data={recipe.heroSection} variant="colored" height="560px">
         <Flex>
           {recipe.categoriesCollection.items.map(category => (
             <Tag key={category.sys.id} title={category.name} />

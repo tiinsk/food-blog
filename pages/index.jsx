@@ -44,7 +44,7 @@ export async function getStaticProps() {
 }
 
 const Home = ({ home, recipes, filterOptions }) => {
-  const { hero, newRecipesTitle, filter } = home;
+  const { heroSection, newRecipesTitle, filterSection } = home;
   const [selectedFilters, setSelectedFilters] = useState({});
 
   const filterCount = flatten(Object.values(selectedFilters)).length;
@@ -68,13 +68,13 @@ const Home = ({ home, recipes, filterOptions }) => {
 
   return (
     <div>
-      <Hero data={hero} pb="20vh" />
+      <Hero data={heroSection} pb="20vh" />
       <PageContent>
         <Section sectionProps={{ top: '-130px', mb: '-130px' }}>
           <Filter
             selectedFilters={selectedFilters}
             onUpdateFilters={filters => setSelectedFilters(filters)}
-            filterSection={filter}
+            filterSection={filterSection}
             filterOptions={filterOptions}
           />
         </Section>

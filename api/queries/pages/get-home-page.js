@@ -4,7 +4,7 @@ export const getHomePage = gql`
   query getHomePage($preview: Boolean) {
     pageHome(id: "4r7BP0GcUzUyajjXbXkYkL", preview: $preview) {
       newRecipesTitle
-      hero {
+      heroSection {
         title
         subtitle {
           json
@@ -13,7 +13,7 @@ export const getHomePage = gql`
           url
         }
       }
-      filter {
+      filterSection {
         title
         resultTitle
         noResultsTitle
@@ -31,16 +31,14 @@ export const getHomePage = gql`
         slug
         name
         description
-        hero {
+        heroSection {
           image {
             url
           }
         }
         categoriesCollection(preview: $preview) {
           items {
-            ... on Category {
-              name
-            }
+            name
           }
         }
         cookTime

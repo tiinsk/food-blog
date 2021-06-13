@@ -38,7 +38,11 @@ export const RecipeListItem = ({ data }) => {
       <StyledRecipeListItem mt="S" width={352}>
         <Flex flexDirection="column">
           <ImageContainer>
-            <Image className="image" src={data.hero.image.url} layout="fill" />
+            <Image
+              className="image"
+              src={data.heroSection.image.url}
+              layout="fill"
+            />
           </ImageContainer>
           <Small color="purble70" mt="M">
             {data.categoriesCollection.items.map(c => c.name).join(', ')}

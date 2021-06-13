@@ -8,7 +8,7 @@ export const recipeFragment = gql`
     body {
       json
     }
-    hero {
+    heroSection {
       image {
         url
       }
