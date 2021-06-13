@@ -38,6 +38,16 @@ const FiltersMenuWrapper = styled(Flex).attrs({
   border: 1px solid ${({ theme }) => theme.colors.grey30};
 `;
 
+const GroupLabel = styled(Label).attrs({
+  mt: 'M',
+  mx: 'M',
+  color: 'grey100',
+})`
+  &:first-of-type {
+    margin-top: 0;
+  }
+`;
+
 const GroupedFilters = styled(Flex).attrs({
   my: 'M',
   flexWrap: ['nowrap', null, null, 'wrap'],
@@ -91,9 +101,7 @@ export const AllFiltersMenu = ({
         <GroupedFilters>
           {filters.map(({ filter, title }) => (
             <Fragment key={filter}>
-              <Label mt="M" mx="M" color="grey100">
-                {title}
-              </Label>
+              <GroupLabel>{title}</GroupLabel>
               <MenuList
                 options={filterOptions[filter].map(fv => ({
                   id: fv.name,

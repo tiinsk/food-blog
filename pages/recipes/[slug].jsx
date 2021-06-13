@@ -54,7 +54,6 @@ export async function getStaticProps({ params }) {
 }
 
 const Recipe = ({ recipe, pageRecipe }) => {
-  console.log('recipe', recipe, pageRecipe);
   const router = useRouter();
 
   if (router.isFallback) {
@@ -90,7 +89,7 @@ const Recipe = ({ recipe, pageRecipe }) => {
       </Hero>
       <PageContent>
         <Section>
-          <StyledRecipeBody richText={recipe.body.json} />
+          <StyledRecipeBody richText={recipe.body ? recipe.body.json : null} />
         </Section>
         <Section>
           <Flex flexDirection={['column', null, null, 'row']}>

@@ -61,7 +61,7 @@ export const RecipeListItem = ({ data }) => {
             <Flex alignItems="center">
               <Icon type="leaderboard" size="1.6rem" color="green40" />
               <Small ml="S" color="green40">
-                {data.difficultyLevel.title}
+                {data.difficultyLevel.name}
               </Small>
             </Flex>
           </Flex>
