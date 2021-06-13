@@ -30,7 +30,7 @@ const ImageContainer = styled.div`
     bottom: unset !important;
     height: unset !important;
 
-    top: -50% !important;
+    top: 0 !important;
   }
 `;
 
@@ -42,7 +42,7 @@ export const RecipeListItem = ({ data }) => {
           <ImageContainer>
             <Image
               className="image"
-              src={data.heroSection.image.url}
+              src={`${data.heroSection.image.url}?w=600&fm=jpg&fl=progressive`}
               layout="fill"
             />
           </ImageContainer>

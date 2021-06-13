@@ -34,6 +34,13 @@ const ImageWrapper = styled.div`
 
   display: flex;
   align-items: center;
+  .image {
+    max-height: none !important;
+    bottom: unset !important;
+    height: unset !important;
+
+    top: -40% !important;
+  }
 `;
 
 const ImageGradient = styled.div`
@@ -72,7 +79,8 @@ export const Hero = ({
     <StyledHero height={height}>
       <ImageWrapper height={height}>
         <Image
-          src={data.image.url}
+          className="image"
+          src={`${data.image.url}?w=2000&fm=jpg&fl=progressive`}
           alt="Picture of the author"
           layout="fill"
           objectFit="cover"
