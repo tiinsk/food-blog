@@ -27,7 +27,11 @@ export const getHomePage = gql`
         }
       }
     }
-    recipeCollection(preview: $preview) {
+    recipeCollection(
+      preview: $preview
+      order: [sys_publishedAt_DESC]
+      limit: 20
+    ) {
       items {
         slug
         name
