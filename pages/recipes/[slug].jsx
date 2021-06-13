@@ -31,9 +31,7 @@ const StyledRecipeBody = styled(TextComponent)`
 `;
 
 export async function getStaticPaths() {
-  const { recipeCollection } = await fetcher(getAllRecipeIds, {
-    preview: true,
-  });
+  const { recipeCollection } = await fetcher(getAllRecipeIds);
   return {
     paths: recipeCollection.items.map(recipe => ({
       params: { slug: recipe.slug },
@@ -44,7 +42,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const { recipeCollection, pageRecipe } = await fetcher(getRecipePage, {
-    preview: true,
     slug: params.slug,
   });
 

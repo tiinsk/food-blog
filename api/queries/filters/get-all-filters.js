@@ -1,7 +1,9 @@
 import { gql } from 'graphql-request';
 
+import { isPreview } from '../../../utils/is-preview';
+
 export const getFilters = gql`
-  query getFilters($preview: Boolean) {
+  query getFilters($preview: Boolean = ${isPreview}) {
     themeCollection(order: [name_ASC], preview: $preview) {
       items {
         name

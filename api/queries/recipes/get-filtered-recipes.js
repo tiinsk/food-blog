@@ -1,8 +1,10 @@
 import { gql } from 'graphql-request';
 
+import { isPreview } from '../../../utils/is-preview';
+
 export const getFilteredRecipes = gql`
   query getFilteredRecipes(
-    $preview: Boolean
+    $preview: Boolean = ${isPreview}
     $theme: [String!] = []
     $category: [String!] = []
     $keyIngredient: [String!] = []

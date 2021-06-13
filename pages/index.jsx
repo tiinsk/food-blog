@@ -25,15 +25,13 @@ const RecipeList = styled(Grid)`
 
 export async function getStaticProps() {
   // TODO add Promise.all
-  const { pageHome, recipeCollection } = await fetcher(getHomePage, {
-    preview: true,
-  });
+  const { pageHome, recipeCollection } = await fetcher(getHomePage);
   const {
     themeCollection,
     categoryCollection,
     keyIngredientCollection,
     difficultyLevelCollection,
-  } = await fetcher(getFilters, { preview: true });
+  } = await fetcher(getFilters);
 
   return {
     props: {
