@@ -100,6 +100,11 @@ const Recipe = ({ recipe, pageRecipe }) => {
               flexDirection="column"
             >
               <H4 mt="0">{pageRecipe.ingredientTitle}</H4>
+              <P1
+                fontSize="1.8rem"
+                color="green50"
+                mb="M"
+              >{`${pageRecipe.personCountForText} ${recipe.personCount} ${pageRecipe.personCountText}`}</P1>
               <Box as="table" pl="0">
                 <tbody>
                   {recipe.ingredientsCollection.items.map(ingredient => (

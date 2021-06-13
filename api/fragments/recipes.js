@@ -5,6 +5,7 @@ export const recipeFragment = gql`
     slug
     name
     description
+    personCount
     body {
       json
     }

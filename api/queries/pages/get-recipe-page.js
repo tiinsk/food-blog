@@ -9,6 +9,7 @@ export const getRecipePage = gql`
       stepTitle
       ingredientTitle
       personCountText
+      personCountForText
       cookTimeText
       drinkRecommendationTitle
     }
