@@ -6,7 +6,7 @@ import { Box } from '../styled/box';
 import { Flex } from '../styled/flex';
 import { H1, P1, RichText } from '../styled/text';
 
-const HeroDefaultHeight = '120vh';
+const HeroDefaultHeight = '110vh';
 
 const heroGradientVariants = variant({
   variants: {

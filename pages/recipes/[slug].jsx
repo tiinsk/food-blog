@@ -66,7 +66,7 @@ const Recipe = ({ recipe, pageRecipe }) => {
       <Hero data={recipe.heroSection} variant="colored" height="560px">
         <Flex>
           {recipe.categoriesCollection.items.map(category => (
-            <Tag key={category.sys.id} title={category.name} />
+            <Tag mr="S" key={category.sys.id} title={category.name} />
           ))}
         </Flex>
         <H2 color="white">{recipe.name}</H2>
