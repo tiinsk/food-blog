@@ -11,6 +11,7 @@ import { getFilteredRecipes } from '../api/queries/recipes/get-filtered-recipes'
 import { getRecipesWithId } from '../api/queries/recipes/get-recipes-with-id';
 import { Filter } from '../components/filters';
 import { Hero } from '../components/hero';
+import { LoadingIcon } from '../components/loading';
 import { PageContent } from '../components/page-layout/page-content';
 import { RecipeListItem } from '../components/recipes/recipe-list-item';
 import { Grid } from '../components/styled/grid';
@@ -67,8 +68,11 @@ const Home = ({ home, recipes, filterOptions }) => {
 
   const { data: recipeData, error: recipeError } = useSWR(
     [getRecipesWithId, stringifiedIds],
-    query => (uniqueRecipes.length ? fetcher(query, { uniqueRecipes }) : null)
+    query =>
+      uniqueRecipes.length ? fetcher(query, { ids: uniqueRecipes }) : null
   );
+
+  const isLoading = filterCount && !recipeData;
 
   return (
     <div>
@@ -95,14 +99,20 @@ const Home = ({ home, recipes, filterOptions }) => {
           ) : (
             <>
               <H5>{filterSection.resultTitle}</H5>
-              {recipeData && recipeData.recipeCollection ? (
-                <RecipeList>
-                  recipeData.recipeCollection.items.map(recipe => (
-                  <RecipeListItem key={recipe.slug} data={recipe} />
-                  ))
-                </RecipeList>
+              {isLoading ? (
+                <LoadingIcon />
               ) : (
-                <P1>{filterSection.noResultsTitle}</P1>
+                <>
+                  {recipeData && recipeData.recipeCollection ? (
+                    <RecipeList>
+                      {recipeData.recipeCollection.items.map(recipe => (
+                        <RecipeListItem key={recipe.slug} data={recipe} />
+                      ))}
+                    </RecipeList>
+                  ) : (
+                    <P1>{filterSection.noResultsTitle}</P1>
+                  )}
+                </>
               )}
             </>
           )}
