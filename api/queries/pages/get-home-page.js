@@ -18,6 +18,7 @@ export const getHomePage = gql`
         resultTitle
         noResultsTitle
         allFiltersButtonText
+        applyButtonText
         filtersCollection(preview: $preview) {
           items {
             title

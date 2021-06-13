@@ -1,6 +1,7 @@
 export const colors = {
   black: '#1f1f1f',
   white: 'white',
+  blackTransparent: '#000000a6',
 
   //blue
   blue100: '#2c4267',

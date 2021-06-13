@@ -88,13 +88,13 @@ const Home = ({ home, recipes, filterOptions }) => {
             </>
           ) : (
             <>
-              <H5>{filter.resultTitle}</H5>
+              <H5>{filterSection.resultTitle}</H5>
               {recipeData && recipeData.recipeCollection ? (
                 recipeData.recipeCollection.items.map(recipe => (
                   <RecipeListItem key={recipe.slug} data={recipe} />
                 ))
               ) : (
-                <P1>{filter.noResultsTitle}</P1>
+                <P1>{filterSection.noResultsTitle}</P1>
               )}
             </>
           )}

@@ -49,6 +49,13 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     width: 100vw;
     overflow-x: hidden;
+    
+    ${({ theme }) => theme.mediaQueries.screenS} {
+      &.mobile-menu-open {
+        max-height: 100vh;
+        overflow: hidden;
+      }
+    }
   }
   
   p {

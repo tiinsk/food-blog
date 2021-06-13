@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import { Dropdown } from '../dropdowns';
@@ -6,6 +7,7 @@ import { Button } from '../styled/button';
 import { Flex } from '../styled/flex';
 import { Label } from '../styled/text';
 import { Tag } from '../tags';
+import { AllFiltersMenu } from './all-filters-menu';
 
 const StyledFilter = styled(Box).attrs({
   p: 'L',
@@ -28,6 +30,8 @@ export const Filter = ({
   selectedFilters,
   onUpdateFilters,
 }) => {
+  const [isAllFiltersMenuOpen, setAllFiltersMenuOpen] = useState(false);
+
   const onUpdateFilterSelection = (filter, id) => {
     if (
       selectedFilters[filter] &&
@@ -52,8 +56,18 @@ export const Filter = ({
     return [...acc, ...selected.map(s => ({ filter: curr, value: s }))];
   }, []);
 
+  const openAllFilters = isOpen => {
+    if (isOpen) {
+      document.body.classList.add('mobile-menu-open');
+    } else {
+      document.body.classList.add('mobile-menu-open');
+    }
+
+    setAllFiltersMenuOpen(isOpen);
+  };
+
   return (
-    <div>
+    <Box position="relative">
       <StyledFilter>
         <Label color="grey100" mb="S">
           {filterSection.title}
@@ -62,30 +76,49 @@ export const Filter = ({
           flexDirection={['column', null, null, 'row']}
           alignItems="flex-start"
         >
-          <Flex flexWrap="wrap" flexGrow={1}>
-            {filters.map(({ filter, title }) => (
-              <Box key={filter} mr="S">
-                <Dropdown
-                  title={title}
-                  options={filterOptions[filter].map(fv => ({
-                    id: fv.name,
-                    label: fv.name,
-                  }))}
-                  selectedOptions={selectedFilters[filter] || []}
-                  onToggleSelection={id => onUpdateFilterSelection(filter, id)}
-                />
-              </Box>
-            ))}
-          </Flex>
+          <Box display={['none', null, null, 'initial']} width="100%">
+            <Flex flexWrap="wrap" flexGrow={1}>
+              {filters.map(({ filter, title }) => (
+                <Box key={filter} mr="S">
+                  <Dropdown
+                    title={title}
+                    options={filterOptions[filter].map(fv => ({
+                      id: fv.name,
+                      label: fv.name,
+                    }))}
+                    selectedOptions={selectedFilters[filter] || []}
+                    onToggleSelection={id =>
+                      onUpdateFilterSelection(filter, id)
+                    }
+                  />
+                </Box>
+              ))}
+            </Flex>
+          </Box>
           <Button
             ml={['0', null, null, 'M']}
-            mt={['M', null, null, '0']}
+            width={['100%', null, null, 'initial']}
             iconType="filter_list"
+            onClick={() => openAllFilters(true)}
           >
             {filterSection.allFiltersButtonText}
           </Button>
         </Flex>
       </StyledFilter>
+      {isAllFiltersMenuOpen && (
+        <AllFiltersMenu
+          title={filterSection.allFiltersButtonText}
+          applyButtonText={filterSection.applyButtonText}
+          filters={filters}
+          filterOptions={filterOptions}
+          selectedFilters={selectedFilters}
+          onApplyFilters={filters => {
+            onUpdateFilters(filters);
+            openAllFilters(false);
+          }}
+          onClose={() => openAllFilters(false)}
+        />
+      )}
       <SelectedOptionsList>
         {selectedList.map(({ filter, value }) => (
           <Tag
@@ -97,6 +130,6 @@ export const Filter = ({
           />
         ))}
       </SelectedOptionsList>
-    </div>
+    </Box>
   );
 };
