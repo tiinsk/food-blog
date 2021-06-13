@@ -59,7 +59,12 @@ const Recipe = ({ recipe, pageRecipe }) => {
 
   return (
     <div>
-      <Hero data={recipe.heroSection} variant="colored" height="560px">
+      <Hero
+        data={recipe.heroSection}
+        variant="colored"
+        height="560px"
+        showHomeLink={true}
+      >
         <Flex>
           {recipe.categoriesCollection.items.map(category => (
             <Tag mr="S" key={category.sys.id} title={category.name} />

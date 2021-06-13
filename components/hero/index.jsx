@@ -1,10 +1,12 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import styled from 'styled-components';
 import { variant } from 'styled-system';
 
 import { Box } from '../styled/box';
 import { Flex } from '../styled/flex';
-import { H1, P1, RichText } from '../styled/text';
+import { Icon } from '../styled/icon';
+import { H1, Label, RichText } from '../styled/text';
 
 const HeroDefaultHeight = '110vh';
 
@@ -50,6 +52,17 @@ const ImageGradient = styled.div`
   ${heroGradientVariants};
 `;
 
+const HomeLink = styled(Box).attrs({
+  mt: 'M',
+  ml: 'M',
+})`
+  position: absolute;
+  top: 0;
+  left: 0;
+  align-items: center;
+  cursor: pointer;
+`;
+
 const ContentWrapper = styled(Flex)`
   position: absolute;
   top: 0;
@@ -73,6 +86,7 @@ export const Hero = ({
   height,
   children,
   variant = 'default',
+  showHomeLink = false,
   ...props
 }) => {
   return (
@@ -89,6 +103,18 @@ export const Hero = ({
         <ImageGradient variant={variant} height={height} />
       </ImageWrapper>
       <ContentWrapper>
+        {showHomeLink && (
+          <HomeLink>
+            <Link href="/">
+              <div>
+                <Flex alignItems="center">
+                  <Icon color="white" type="arrow_back" mr="S" />
+                  <Label color="white">Home</Label>
+                </Flex>
+              </div>
+            </Link>
+          </HomeLink>
+        )}
         <HeroContent {...props}>
           {data.title && <H1 color="white">{data.title}</H1>}
           {data.subtitle && (
