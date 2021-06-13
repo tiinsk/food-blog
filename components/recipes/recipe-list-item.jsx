@@ -8,7 +8,9 @@ import { Label, P2, Small } from '../styled/text';
 
 const StyledRecipeListItem = styled(Flex).attrs({
   p: 'S',
+  mt: 'S',
 })`
+  width: 100%;
   cursor: pointer;
 
   &:hover {
@@ -18,7 +20,7 @@ const StyledRecipeListItem = styled(Flex).attrs({
 
 const ImageContainer = styled.div`
   width: 100%;
-  height: 192px;
+  height: 275px;
   position: relative;
   border-radius: 6px;
   overflow: hidden;
@@ -35,8 +37,8 @@ const ImageContainer = styled.div`
 export const RecipeListItem = ({ data }) => {
   return (
     <Link href={`/recipes/${data.slug}`}>
-      <StyledRecipeListItem mt="S" width={352}>
-        <Flex flexDirection="column">
+      <StyledRecipeListItem>
+        <Flex width="100%" flexDirection="column">
           <ImageContainer>
             <Image
               className="image"

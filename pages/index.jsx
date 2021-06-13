@@ -2,6 +2,7 @@ import stringify from 'json-stable-stringify';
 import flatten from 'lodash/flatten';
 import { useState } from 'react';
 import useSWR from 'swr';
+import styled from 'styled-components';
 
 import { fetcher } from '../api/fetcher';
 import { getFilters } from '../api/queries/filters/get-all-filters';
@@ -12,10 +13,15 @@ import { Filter } from '../components/filters';
 import { Hero } from '../components/hero';
 import { PageContent } from '../components/page-layout/page-content';
 import { RecipeListItem } from '../components/recipes/recipe-list-item';
+import { Grid } from '../components/styled/grid';
 import { Section } from '../components/styled/section';
 import { P1 } from '../components/styled/text';
 import { H5 } from '../components/styled/typography';
 import { getUniqueRecipeIdsFromFilters } from '../utils/filters';
+
+const RecipeList = styled(Grid)`
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+`;
 
 export async function getStaticProps() {
   // TODO add Promise.all
@@ -82,17 +88,21 @@ const Home = ({ home, recipes, filterOptions }) => {
           {filterCount === 0 ? (
             <>
               <H5>{newRecipesTitle}</H5>
-              {recipes.map(recipe => (
-                <RecipeListItem key={recipe.slug} data={recipe} />
-              ))}
+              <RecipeList>
+                {recipes.map(recipe => (
+                  <RecipeListItem key={recipe.slug} data={recipe} />
+                ))}
+              </RecipeList>
             </>
           ) : (
             <>
               <H5>{filterSection.resultTitle}</H5>
               {recipeData && recipeData.recipeCollection ? (
-                recipeData.recipeCollection.items.map(recipe => (
+                <RecipeList>
+                  recipeData.recipeCollection.items.map(recipe => (
                   <RecipeListItem key={recipe.slug} data={recipe} />
-                ))
+                  ))
+                </RecipeList>
               ) : (
                 <P1>{filterSection.noResultsTitle}</P1>
               )}
