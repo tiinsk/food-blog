@@ -21,7 +21,7 @@ import { H5 } from '../components/styled/typography';
 import { getUniqueRecipeIdsFromFilters } from '../utils/filters';
 
 const RecipeList = styled(Grid)`
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
 `;
 
 export async function getStaticProps() {
