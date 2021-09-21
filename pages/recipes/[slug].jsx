@@ -12,18 +12,11 @@ import { Box } from '../../components/styled/box';
 import { Flex } from '../../components/styled/flex';
 import { Icon } from '../../components/styled/icon';
 import { Section } from '../../components/styled/section';
-import {
-  H2,
-  H4,
-  H6,
-  P1,
-  Small,
-  TextComponent,
-} from '../../components/styled/text';
+import { H2, H4, H6, P1, RichText, Small } from '../../components/styled/text';
 import { P1Style, P2Style } from '../../components/styled/typography';
 import { Tag } from '../../components/tags';
 
-const StyledRecipeBody = styled(TextComponent)`
+const StyledRecipeBody = styled(RichText)`
   ${P2Style};
   b {
     ${P1Style};
