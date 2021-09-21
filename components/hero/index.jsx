@@ -42,6 +42,9 @@ const ImageWrapper = styled.div`
     height: unset !important;
 
     top: -40% !important;
+    ${({ theme }) => theme.mediaQueries.tablet} {
+      top: initial !important;
+    }
   }
 `;
 
